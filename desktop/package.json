@@ -1,0 +1,39 @@
+{
+  "name": "nullclaw-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop front end for the NullClaw gateway, speaking webchannel_v1.",
+  "license": "MIT",
+  "main": "dist-electron/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:electron": "npm run build:electron && electron .",
+    "build": "tsc -b && vite build && npm run build:electron",
+    "build:electron": "tsc -p electron/tsconfig.json",
+    "typecheck": "tsc -b --noEmit && tsc -p electron/tsconfig.json --noEmit",
+    "package": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  },
+  "build": {
+    "appId": "dev.nullclaw.desktop",
+    "productName": "NullClaw",
+    "files": ["dist/**", "dist-electron/**"],
+    "mac": { "target": "dmg" },
+    "win": { "target": "nsis" },
+    "linux": { "target": ["AppImage", "deb"] }
+  }
+}
