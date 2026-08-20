@@ -108,3 +108,7 @@ data. The paths that matter:
 - Chunk/final reconciliation, including a `final` with no preceding chunk.
 - Approval correlation — the `request_id` on the response matches the ask.
 - Backoff bounds — retry stops at the budget and reports a reason.
+
+Run them with `npm test`. Reconciliation lives in `src/state/transcript.ts` as a
+pure reducer precisely so these rules are testable without a DOM; keep new
+streaming rules there rather than in the hook.

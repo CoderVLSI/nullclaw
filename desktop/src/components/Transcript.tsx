@@ -1,4 +1,4 @@
-import type { PendingApproval, TranscriptItem } from "../state/useSession.js";
+import type { PendingApproval, TranscriptItem } from "../state/transcript.js";
 
 function ToolCall({ name, args }: { name: string; args: Record<string, unknown> }) {
   return (

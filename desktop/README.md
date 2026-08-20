@@ -47,6 +47,18 @@ The renderer is shell-agnostic, so `npm run dev` alone opens a working app in a
 browser at <http://127.0.0.1:5273>. Native features (process supervision,
 config editing) are hidden when the Electron bridge is absent.
 
+## Tests
+
+```bash
+npm test          # 43 tests, no gateway required
+npm run test:watch
+```
+
+Coverage is the protocol surface, not the pixels: envelope parse/reject, the
+pairing ladder, chunk/final reconciliation, approval correlation, and retry
+bounds. `WebchannelClient` is driven against a fake socket
+(`test/fakeSocket.ts`), so the suite runs without a gateway or a display.
+
 ## Build and package
 
 ```bash

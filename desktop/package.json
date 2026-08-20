@@ -12,7 +12,9 @@
     "build": "tsc -b && vite build && npm run build:electron",
     "build:electron": "tsc -p electron/tsconfig.json",
     "typecheck": "tsc -b --noEmit && tsc -p electron/tsconfig.json --noEmit",
-    "package": "npm run build && electron-builder"
+    "package": "npm run build && electron-builder",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -26,14 +28,27 @@
     "electron": "^33.2.0",
     "electron-builder": "^25.1.8",
     "typescript": "^5.7.2",
-    "vite": "^6.0.3"
+    "vite": "^6.0.3",
+    "vitest": "^4.1.11"
   },
   "build": {
     "appId": "dev.nullclaw.desktop",
     "productName": "NullClaw",
-    "files": ["dist/**", "dist-electron/**"],
-    "mac": { "target": "dmg" },
-    "win": { "target": "nsis" },
-    "linux": { "target": ["AppImage", "deb"] }
+    "files": [
+      "dist/**",
+      "dist-electron/**"
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
   }
 }
