@@ -83,16 +83,22 @@ Enable the web channel in `~/.nullclaw/config.json`:
 ```json
 {
   "channels": {
-    "web": {
-      "transport": "local",
-      "listen": "127.0.0.1",
-      "port": 32123,
-      "path": "/ws",
-      "message_auth_mode": "pairing"
-    }
+    "web": [
+      {
+        "account_id": "default",
+        "transport": "local",
+        "listen": "127.0.0.1",
+        "port": 32123,
+        "path": "/ws",
+        "message_auth_mode": "pairing"
+      }
+    ]
   }
 }
 ```
+
+Note `web` is an **array** of account configs, not a single object — see
+`ChannelsConfig.web` in `src/config_types.zig`.
 
 Keep `listen` on loopback. Binding the web channel to a public address requires
 a token and is rejected otherwise — see the guards in `src/channels/web.zig`.
